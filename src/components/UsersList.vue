@@ -1,10 +1,6 @@
 <template>
   <div>
-    <input
-      v-model="search"
-      class="form-control"
-      placeholder="Фильтрация по фамилии"
-    />
+    <input v-model="searchName" class="form-control" placeholder="Фильтрация по фамилии" />
     <table class="table table-striped">
       <thead>
         <tr>
@@ -16,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user of users" v-bind:user="user" v-bind:key="user.id">
+        <tr v-for="user in filteredPersons" v-bind:user="user" v-bind:key="user.id">
           <th scope="row">{{ user.id }}</th>
           <td>{{ user.first_name }}</td>
           <td>{{ user.last_name }}</td>
@@ -26,9 +22,7 @@
               type="button"
               class="btn btn-danger"
               v-on:click="$emit('removeUser', user.id)"
-            >
-              Удалить
-            </button>
+            >Удалить</button>
           </td>
         </tr>
       </tbody>
@@ -46,23 +40,31 @@ export default {
     last_name: String,
     email: String,
   },
-  components: {},
   methods: {
+    filterByName: function (user) {
+      if (this.searchName.length === 0) {
+        return true;
+      }
+      return (
+        user.last_name.toLowerCase().indexOf(this.searchName.toLowerCase()) > -1
+      );
+    },
+
     removeUser(id) {
       this.$emit("removeUser", id);
-    },
-    sortBy: function (sortKey) {
-      this.reverse = this.sortKey === sortKey ? !this.reverse : false;
-
-      this.sortKey = sortKey;
     },
   },
   data() {
     return {
       search: "",
-      sortKey: "Фамилия",
-      reverse: false,
+      searchName: "",
     };
+  },
+
+  computed: {
+    filteredPersons: function () {
+      return this.users.filter(this.filterByName);
+    },
   },
 };
 </script>

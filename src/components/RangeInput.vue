@@ -53,6 +53,7 @@ export default {
   align-self: flex-start;
   color: #fff;
   opacity: 0.5;
+  padding-top: 10px;
 }
 
 .range__input {

@@ -20,6 +20,12 @@ export default new Router({
         {
             path: '/crud',
             component: () => import('./Views/Crud.vue')
+        },
+        {
+            name: 'User',
+          path: '/user/:id',
+            component: () => import('./Views/User.vue'),
+            props:true
         }
     ]
 })

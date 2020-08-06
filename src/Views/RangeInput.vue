@@ -59,6 +59,7 @@ export default {
   align-self: flex-start;
   color: #fff;
   opacity: 0.5;
+  margin-top: 10px;
 }
 
 .range__input {

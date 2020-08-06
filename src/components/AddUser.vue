@@ -1,14 +1,31 @@
 <template>
   <form class="form-group" @submit.prevent="onSubmit" @submit="checkForm">
     <p v-if="errors.length">
-    <b>Пожалуйста исправьте указанные ошибки:</b>
+      <b>Пожалуйста исправьте указанные ошибки:</b>
+    </p>
+
     <ul>
       <li v-for="error in errors" v-bind:key="error.index">{{ error }}</li>
     </ul>
-  </p>
-    <input type="text" class="form-control" v-model="first_name" placeholder="Имя" />
-    <input type="text" class="form-control" v-model="last_name" placeholder="Фамилия" />
-    <input type="text" class="form-control" v-model="email" placeholder="Email" />
+
+    <input
+      type="text"
+      class="form-control"
+      v-model="first_name"
+      placeholder="Имя"
+    />
+    <input
+      type="text"
+      class="form-control"
+      v-model="last_name"
+      placeholder="Фамилия"
+    />
+    <input
+      type="text"
+      class="form-control"
+      v-model="email"
+      placeholder="Email"
+    />
     <button type="submit" class="btn btn-primary">Добавить</button>
   </form>
 </template>
@@ -33,14 +50,14 @@ export default {
       this.errors = [];
 
       if (!this.first_name) {
-        this.errors.push('Требуется указать имя.');
+        this.errors.push("Требуется указать имя.");
       }
       if (!this.last_name) {
-        this.errors.push('Требуется указать фамилию.');
+        this.errors.push("Требуется указать фамилию.");
       }
       e.preventDefault();
     },
-    onSubmit() {     
+    onSubmit() {
       if (this.first_name.trim) {
         const newUser = {
           id: this.users.length + 1,
@@ -53,8 +70,8 @@ export default {
         this.last_name = "";
         this.email = "";
       }
-      if(this.errors.length > 0){
-        return false
+      if (this.errors.length > 0) {
+        return false;
       }
     },
   },

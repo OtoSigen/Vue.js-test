@@ -1,4 +1,11 @@
-# Test work
+# Test vue js
+
+В приложение реализована главная страница с двумя ссылками, первая на страницу с range input, вторая на список пользователей. На странице со списком пользователей, есть возможность добавления пользователя, удаления, фильтрация по фамилии и переход на подробную страницу пользователя. Если остаются вопросы могу ещё реализовать валидацию инпутов при добавление пользователя и проработать подробную страницу пользователя.
+
+Использованые технологии:
+vue,
+vue router,
+bootstrap
 
 ## Project setup
 ```
@@ -10,15 +17,4 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
